@@ -11,7 +11,7 @@ def index():
     return render_template("index.html")
 
 
-@app.post("users/register")
+@app.post("/users/register")
 def register():
     if not User.validate_register(request.form):
         return redirect("/")
@@ -34,7 +34,7 @@ def register():
     return redirect("users/success")
 
 
-@app.get("users/success/")
+@app.get("/users/success/")
 def success():
     if "user_id" not in session:
         flash("You must be logged in to view that page.", "login")
@@ -43,7 +43,7 @@ def success():
     return render_template("dashboard.html", user=user)
 
 
-@app.post("users/login")
+@app.post("/users/login")
 def login():
     if not User.validate_login(request.form):
         return redirect("/")
@@ -62,7 +62,7 @@ def login():
     return redirect("users/success")
 
 
-@app.route("users/logout")
+@app.route("/users/logout")
 def logout():
     session.clear()
     return redirect("/")
