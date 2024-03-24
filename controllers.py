@@ -31,11 +31,11 @@ def register():
     }
     user_id = User.create(user_data)
     session["user_id"] = user_id
-    return redirect("users/success")
+    return redirect("users/dashboard")
 
 
-@app.get("/users/success/")
-def success():
+@app.get("/users/dashboard/")
+def dashboard():
     if "user_id" not in session:
         flash("You must be logged in to view that page.", "login")
         return redirect("/")
@@ -59,7 +59,7 @@ def login():
         return redirect("/")
 
     session["user_id"] = user.id
-    return redirect("users/success")
+    return redirect("users/dashboard")
 
 
 @app.route("/users/logout")
