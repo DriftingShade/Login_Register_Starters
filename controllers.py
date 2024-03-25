@@ -31,7 +31,7 @@ def register():
     }
     user_id = User.create(user_data)
     session["user_id"] = user_id
-    return redirect("users/dashboard")
+    return redirect("/users/dashboard")
 
 
 @app.get("/users/dashboard/")
@@ -59,7 +59,7 @@ def login():
         return redirect("/")
 
     session["user_id"] = user.id
-    return redirect("users/dashboard")
+    return redirect("/users/dashboard")
 
 
 @app.route("/users/logout")
